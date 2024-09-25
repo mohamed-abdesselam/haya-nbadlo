@@ -62,7 +62,7 @@ const StudentList = ({ transferedList, user, role }: StudentListProps) => {
     return (
         <div className="flex flex-col gap-4">
             {
-                transferedList.length ? (
+                transferedList?.length ? (
                     transferedList.map((transfer: any) => {
                         // const isRequest = role === ('request' || 'all') ? (transfer.requests.findLast((r: any) => user?.email === r?.userId.email).status) : ''
                         const isRequest = (role === 'request')
