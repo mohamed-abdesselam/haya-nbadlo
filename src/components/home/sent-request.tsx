@@ -37,7 +37,7 @@ const SentRequest = ({ transfer, user }: SentRequestProps) => {
         }
         setLoading(true)
         try {
-            await axios.patch('/api/transfer/addRequest', { transferId: transfer._id, userId: user._id })
+            await axios.patch('/api/transferReq/addRequest', { transferId: transfer._id, userId: user._id })
             toast.success('Successfully added transfer request')
             router.refresh()
         } catch (error) {

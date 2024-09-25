@@ -1,4 +1,3 @@
-// /pages/api/transfer/accept.ts
 import Transfer from "@/lib/models/Transfer";
 import { connectToDB } from "@/lib/mongoDB";
 import { NextResponse } from "next/server";

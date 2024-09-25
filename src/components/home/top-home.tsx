@@ -60,7 +60,7 @@ const TopHome = ({ user }: TopHomeProps) => {
         console.log(data);
 
         try {
-            const res = await axios.post('/api/transfer', { studentId: user?._id, ...data })
+            const res = await axios.post('/api/transferReq', { studentId: user?._id, ...data })
             toast.success('Successfully added transfer request')
             router.refresh()
         } catch (error) {
