@@ -47,6 +47,18 @@
     "code": "رمز",
     "or": "أو"
   },
+  "Home": {
+    "transfersList": "قائمة التحويلات",
+    "transfersISent": "التحويلات التي أرسلتها",
+    "myTransfers": "تحويلاتي",
+    "transfersIRequset": "التحويلات التي طلبتها",
+    "createATransferRequest": "إنشاء طلب تحويل",
+    "transferInformation": "معلومات التحويل",
+    "yourInformation": "معلوماتك",
+    "exchangeInformation": "معلومات التبادل",
+    "add": "إضافة",
+    "transferDesc": "يرجى إضافة التخصص والفصل الذي ترغب في التحويل إليه."
+  },
   "NullData": {
     "login": "تسجيل الدخول",
     "signOut": "تسجيل الخروج",

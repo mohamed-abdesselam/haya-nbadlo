@@ -171,6 +171,8 @@ const RegisterClient = () => {
               type="text"
               className="w-full border border-border rounded px-3 py-2 mb-4 focus:outline-none focus:border-primary/80 focus:text-black"
               placeholder={t('phone')}
+              value={'07'}
+              readOnly
             />
             <div className="flex gap-4 sm:gap-6 items-center mb-4">
               <Select>

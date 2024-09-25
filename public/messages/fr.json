@@ -47,6 +47,18 @@
     "code": "Code",
     "or": "Ou"
   },
+  "Home": {
+    "transfersList": "Liste des transferts",
+    "transfersISent": "Transferts que j'ai envoyés",
+    "myTransfers": "Mes transferts",
+    "transfersIRequset": "Transferts que j'ai demandés",
+    "createATransferRequest": "Créer une demande de transfert",
+    "transferInformation": "Informations sur le transfert",
+    "yourInformation": "Vos informations",
+    "exchangeInformation": "Informations sur l'échange",
+    "add": "Ajouter",
+    "transferDesc": "Veuillez ajouter la spécialité et la classe vers lesquelles vous souhaitez transférer."
+  },
   "NullData": {
     "login": "Connexion",
     "signOut": "Se déconnecter",

@@ -47,6 +47,18 @@
     "code": "Code",
     "or": "Or"
   },
+  "Home": {
+    "transfersList": "Transfers List",
+    "transfersISent": "Transfers I sent",
+    "myTransfers": "My Transfers",
+    "transfersIRequset": "Transfers I requset",
+    "createATransferRequest": "create a transfer request",
+    "transferInformation": "Transfer Information",
+    "yourInformation": "Your Information",
+    "exchangeInformation": "Exchange Information",
+    "add": "Add",
+    "transferDesc": "Please add the specialty and class you want to transfer to."
+  },
   "NullData": {
     "login": "Login",
     "signOut": "Sign Out",

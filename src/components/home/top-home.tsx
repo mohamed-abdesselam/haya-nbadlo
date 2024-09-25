@@ -23,6 +23,9 @@ import {
 import { Input } from "../ui/input"
 import { useState } from "react"
 import { DialogClose } from "@radix-ui/react-dialog"
+import useTranslation from "@/hooks/useTranslation"
+import { cn } from "@/lib/utils"
+import { useLocale } from "next-intl"
 
 interface TopHomeProps {
     user?: any;
@@ -30,6 +33,8 @@ interface TopHomeProps {
 
 const TopHome = ({ user }: TopHomeProps) => {
     const router = useRouter()
+    const local = useLocale()
+    const { t } = useTranslation('Home')
 
     const [data, setData] = useState({
         email: user?.email || '',
@@ -73,13 +78,13 @@ const TopHome = ({ user }: TopHomeProps) => {
         <div className="flex items-center justify-between mt-8">
             <h1 className="font-bold text-xl">Tabadle Shop</h1>
             <Dialog>
-                <DialogTrigger asChild><Button>Create a transfer request</Button></DialogTrigger>
+                <DialogTrigger asChild className={cn(local === 'ar' ? 'text-right' : 'text-left',)}><Button>{t('createATransferRequest')}</Button></DialogTrigger>
                 <DialogContent>
-                    <DialogHeader>
-                        <DialogTitle>transfer information</DialogTitle>
-                        <DialogDescription>please add the spesiality and class where u want transfer to it</DialogDescription>
+                    <DialogHeader className={cn(local === 'ar' ? 'text-right' : 'text-left',)}>
+                        <DialogTitle>{t('transferInformation')}</DialogTitle>
+                        <DialogDescription>{t('transferDesc')}</DialogDescription>
                         <div className="flex flex-col gap-4 pt-4">
-                            <p className="text-sm font-medium -mb-2">your information</p>
+                            <p className={cn("text-sm font-medium -mb-2", local === 'ar' ? 'text-right' : 'text-left')}>{t('yourInformation')}</p>
                             <Input
                                 type="text"
                                 value={data.name}
@@ -111,7 +116,7 @@ const TopHome = ({ user }: TopHomeProps) => {
                                     onChange={(e) => setData((prev) => ({ ...prev, fromClass: e.target.value, }))}
                                 />
                             </div>
-                            <p className="text-sm font-medium -mb-2">exchange information</p>
+                            <p className={cn("text-sm font-medium -mb-2", local === 'ar' ? 'text-right' : 'text-left')}>{t('exchangeInformation')}</p>
                             <div className="flex gap-4 sm:gap-6 items-center">
                                 <Select onValueChange={(e) => setData((prev) => ({ ...prev, toSpecialty: e, }))} defaultValue={data.toSpecialty}>
                                     <SelectTrigger className="w-full">
@@ -135,7 +140,7 @@ const TopHome = ({ user }: TopHomeProps) => {
                     </DialogHeader>
                     <DialogFooter className="sm:justify-end">
                         <DialogClose asChild>
-                            <Button onClick={createTransfer} className="w-min">Add</Button>
+                            <Button onClick={createTransfer} className="w-min">{t('add')}</Button>
                         </DialogClose>
                     </DialogFooter>
                 </DialogContent>
