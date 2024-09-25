@@ -26,20 +26,24 @@ const StudentList = ({ transferedList, user, role }: StudentListProps) => {
     const [loading, setLoading] = useState(false)
 
     const handleAccept = async (trId: string, userId: string) => {
-        setLoading(true)
+        setLoading(true);
         try {
-            const data = { trId, userId }
-            console.log(data);
-            
-            await axios.post('/api/transfer/accept', data);
-            toast.success('Transfer request accepted')
-            router.refresh()
+            const response = await axios.post('/api/transfer/accept', { trId, userId });
+    
+            if (response.status === 200) {
+                toast.success('Transfer request accepted');
+                router.refresh();
+            } else {
+                toast.error(`Error: ${response.data.message}`);
+            }
         } catch (error) {
             console.error("Error accepting transfer request:", error);
+            toast.error("Something went wrong. Please try again later.");
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
     };
+    
 
     const handleRefuse = async (trId: string, userId: string) => {
         setLoading(true)

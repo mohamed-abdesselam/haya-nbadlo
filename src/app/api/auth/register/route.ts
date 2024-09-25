@@ -1,6 +1,4 @@
-import { mailOptions, transporter } from "@/config/nodemailer";
 import User from "@/lib/models/User";
-import InvitedAdmin from "@/lib/models/InvitedAdmin";
 import { connectToDB } from "@/lib/mongoDB";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";

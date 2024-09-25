@@ -1,31 +1,30 @@
-// /pages/api/transfer/accept.ts
 import Transfer from "@/lib/models/Transfer";
 import { connectToDB } from "@/lib/mongoDB";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export const POST = async (req: Request) => {
     const { trId, userId } = await req.json();
 
     try {
         await connectToDB();
-        // Find the transfer by ID and update the request status to "accepted"
         const transfer = await Transfer.findById(trId);
         if (!transfer) {
-            return new NextResponse("Transfer not found", { status: 404 });
+            return NextResponse.json({ message: "Transfer not found" }, { status: 404 });
         }
 
-        // Find the request with matching userId and update its status
-        const request = transfer.requests.find((r: any) => r.userId.toString() === userId);
+        // Find the request by userId and update its status to "accepted"
+        const request = transfer.requests.find((r: any) => r.userId.toString() === userId.toString());
         if (request) {
             request.status = "accepted";
-            transfer.updatedAt = new Date(); // Update the updatedAt field
+            transfer.updatedAt = new Date(); // Update timestamp
             await transfer.save();
 
-            return new NextResponse("Request status updated to accepted");
+            return NextResponse.json({ message: "Request accepted" }, { status: 200 });
         } else {
-            return new NextResponse("Request not found", { status: 404 });
+            return NextResponse.json({ message: "Request not found" }, { status: 404 });
         }
     } catch (error) {
-        return new NextResponse("Error updating request", { status: 500 });
+        console.error("Error updating request:", error);
+        return NextResponse.json({ message: "Error updating request" }, { status: 500 });
     }
 }
