@@ -1,0 +1,55 @@
+{
+  "IndexPage": {
+    "title": "exemple next-intl",
+    "description": "Bienvenue dans l'exemple d'internationalisation (i18n) de Next.js ! Cette démonstration montre la puissance du routeur d'application et comment gérer du contenu multilingue de manière transparente en utilisant next-intl."
+  },
+  "About": {
+    "title": "À propos",
+    "description": "Bienvenue sur la page À propos",
+    "message": "Vous avez {count, plural, =0 {aucun abonné} =1 {un abonné} other {# abonnés}}."
+  },
+  "NotFoundPage": {
+    "title": "Page non trouvée",
+    "description": "Oups! Il semble que vous êtes tombé sur une page qui n'existe pas. Ne vous inquiétez pas, notre magie d'internationalisation est toujours en train de travailler dur sur d'autres parties de l'application. N'hésitez pas à revenir pour explorer davantage!"
+  },
+  "Navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "color": "Couleur"
+  },
+  "Footer": {
+    "copyright": "© 2024 Votre Application. Tous droits réservés."
+  },
+  "Colors": {
+    "title": "Palette de couleurs",
+    "description": "Cette page affiche la palette de couleurs utilisée dans l'application. Chaque couleur a un objectif spécifique dans le système de conception. Vous trouverez ci-dessous une brève explication de l'utilisation typique de chaque couleur, ainsi qu'un exemple de son application:"
+  },
+  "Auth": {
+    "signOut": "Se déconnecter",
+    "editAccount": "Modifier le compte",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "signIn": "Se connecter",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "email": "Email",
+    "name": "Nom",
+    "phone": "Téléphone",
+    "password": "Mot de passe",
+    "oldPassword": "Ancien mot de passe",
+    "newPassword": "Nouveau mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "changePassword": "Changer le mot de passe",
+    "verifyEmail": "Vérifier l'email",
+    "invalideToken": "Jeton invalide",
+    "code": "Code",
+    "or": "Ou"
+  },
+  "NullData": {
+    "login": "Connexion",
+    "signOut": "Se déconnecter",
+    "goHome": "Accueil"
+  }
+}
