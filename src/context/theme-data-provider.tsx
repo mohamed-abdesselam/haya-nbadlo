@@ -17,9 +17,9 @@ export default function ThemeDataProvider({ children, }: ThemeProviderProps) {
 
   const getSavedThemeColor = () => {
     try {
-      return (localStorage.getItem("themeColor") as ThemeColors) || "Zinc";
+      return (localStorage.getItem("themeColor") as ThemeColors) || "Blue";
     } catch (error) {
-      "Zinc" as ThemeColors;
+      "Blue" as ThemeColors;
     }
   };
 

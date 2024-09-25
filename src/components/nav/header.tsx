@@ -102,6 +102,16 @@ export default function Header({ logo, upBar }: HeaderProps) {
                 <ThemeColorToggle />
               </div>
 
+              {session ? (
+                <>
+                  <Button variant={'secondary'} onClick={() => signOut()}>Sign out</Button>
+                </>
+              ) : (
+                <Link href={`/${locale}/register`}>
+                  <Button>Sign in</Button>
+                </Link>
+              )}
+
               <div className="md:hidden">
                 <Sheet>
                   <SheetTrigger asChild>
@@ -119,12 +129,12 @@ export default function Header({ logo, upBar }: HeaderProps) {
                     <SheetHeader></SheetHeader>
                     <SheetTitle className='text-2xl mb-2'>{t('menu')}</SheetTitle>
                     <SheetDescription className="hidden"></SheetDescription>
-                    <Separator />
-                    <div className="flex flex-col gap-4 pt-8">
+                    {/* <Separator /> */}
+                    <div className="flex flex-col gap-4 pt-2">
                       <Separator className='mt-4' />
                       <Link href="/" className="text-lg font-semibold">{t('home')}</Link>
                       <Link href={`/${locale}/about`} className="text-lg">{t('about')}</Link>
-                      <Link href={`/${locale}/orders`} className="text-lg">{t('orders')}</Link>
+                      {/* <Link href={`/${locale}/orders`} className="text-lg">{t('orders')}</Link> */}
                       <Separator />
                       <div className="flex items-center gap-4 sm:hidden">
                         <ThemeColorToggle />
@@ -135,15 +145,6 @@ export default function Header({ logo, upBar }: HeaderProps) {
                   </SheetContent>
                 </Sheet>
               </div>
-              {session ? (
-                <>
-                  <Button variant={'secondary'} onClick={() => signOut()}>Sign out</Button>
-                </>
-              ) : (
-                <Link href={`/${locale}/register`}>
-                  <Button>Sign in</Button>
-                </Link>
-              )}
 
             </div>
           </nav>

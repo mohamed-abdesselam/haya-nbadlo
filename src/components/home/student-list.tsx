@@ -29,7 +29,7 @@ const StudentList = ({ transferedList, user, role }: StudentListProps) => {
         setLoading(true);
         try {
             const response = await axios.post('/api/transferReq/accept', { trId, userId });
-    
+
             if (response.status === 200) {
                 toast.success('Transfer request accepted');
                 router.refresh();
@@ -43,12 +43,25 @@ const StudentList = ({ transferedList, user, role }: StudentListProps) => {
             setLoading(false);
         }
     };
-    
+
 
     const handleRefuse = async (trId: string, userId: string) => {
         setLoading(true)
         try {
             await axios.post('/api/transferReq/delete', { trId, userId });
+            toast.success('Transfer request deleted')
+            router.refresh()
+        } catch (error) {
+            console.error("Error deleting transfer request:", error);
+        } finally {
+            setLoading(false)
+        }
+    };
+
+    const handleDeleteMy = async (trId: string) => {
+        setLoading(true)
+        try {
+            await axios.delete(`/api/transferReq/${trId}`);
             toast.success('Transfer request deleted')
             router.refresh()
         } catch (error) {
@@ -105,7 +118,7 @@ const StudentList = ({ transferedList, user, role }: StudentListProps) => {
                                     {role === 'sent' ? (
                                         <div className="">
                                             {transfer.status === "accepted" ? <Button disabled={loading} variant={"outline"} size={"sm"} onClick={() => handleRefuse(transfer._id, transfer.studentId._id)}>
-                                                <span className="sr-only">check</span>
+                                                <span className="sr-only">refuse</span>
                                                 <X className="text-muted-foreground w-4 sm:w-5 hover:text-foreground" />
                                             </Button> : <Button disabled={loading} variant={"outline"} size={"sm"} onClick={() => handleAccept(transfer._id, transfer.studentId._id)}>
                                                 <span className="sr-only">check</span>
@@ -114,15 +127,15 @@ const StudentList = ({ transferedList, user, role }: StudentListProps) => {
                                         </div>
                                     ) : role === 'request' ? (
                                         <div className="">
-                                            <Button disabled={loading} variant={"outline"} size={"sm"}>
-                                                <span className="sr-only">check</span>
+                                            {/* <Button disabled={loading} variant={"outline"} size={"sm"} onClick={() => handleRefuse(transfer._id, transfer.studentId._id)}>
+                                                <span className="sr-only">refuse</span>
                                                 <X className="text-muted-foreground w-4 sm:w-5 hover:text-foreground" />
-                                            </Button>
+                                            </Button> */}
                                         </div>
                                     ) : role === 'my' ? (
                                         <div className="">
-                                            <Button disabled={loading} variant={"outline"} size={"sm"}>
-                                                <span className="sr-only">check</span>
+                                            <Button disabled={loading} variant={"outline"} size={"sm"} onClick={() => handleDeleteMy(transfer._id)}>
+                                                <span className="sr-only">delete</span>
                                                 <X className="text-muted-foreground w-4 sm:w-5 hover:text-foreground" />
                                             </Button>
                                         </div>

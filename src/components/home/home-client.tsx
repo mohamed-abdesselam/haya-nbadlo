@@ -16,7 +16,7 @@ const HomwClient = ({ transferedList, user }: HomeProps) => {
     const local = useLocale()
     const { t } = useTranslation('Home')
 
-    const transferedSent = transferedList?.filter((e: any) => e.studentId.toString() === user?._id) // Filter by 'pending' status if needed
+    const transferedSent = transferedList?.filter((e: any) => e.studentId._id.toString() === user?._id) // Filter by 'pending' status if needed
         // .filter((e: any) => e.requests.some((r: any) => r.status === 'pending')) // Filter by 'pending' status if needed
         .map((e: any) =>
             e.requests.map((r: any) => ({
@@ -40,7 +40,7 @@ const HomwClient = ({ transferedList, user }: HomeProps) => {
     );
 
     const myTransfered = transferedList?.filter((e: any) =>
-        e.studentId.toString() === user?._id
+        e.studentId._id.toString() === user?._id
     );
 
 
@@ -56,10 +56,10 @@ const HomwClient = ({ transferedList, user }: HomeProps) => {
                     <TabsList className={cn("max-sm:grid max-sm:h-full grid-cols-2", local === 'ar' && '__rtl_lang')}>
                         <TabsTrigger className="max-sm:px-2 py-1" value="transferedList">{t('transfersList')}</TabsTrigger>
                         <TabsTrigger className="max-sm:px-2 py-1" value="transferedSent">
-                            {t('transfersISent')}{transferedSent?.length > 0 && <div className="absolute rounded-full bg-primary w-2 h-2 top-0 right-1" />}
+                            {t('transfersIRequset')}{transferedSent?.length > 0 && <div className="absolute rounded-full bg-primary w-2 h-2 top-0 right-1" />}
                         </TabsTrigger>
                         <TabsTrigger className="max-sm:px-2 py-1" value="transferedRequest">
-                            {t('transfersIRequset')}{transferedRequest?.length > 0 && <div className="absolute rounded-full bg-primary w-2 h-2 top-0 right-1" />}
+                            {t('transfersISent')}{transferedRequest?.length > 0 && <div className="absolute rounded-full bg-primary w-2 h-2 top-0 right-1" />}
                         </TabsTrigger>
                         <TabsTrigger className="max-sm:px-2 py-1" value="myTransfered">{t('myTransfers')}</TabsTrigger>
                     </TabsList>

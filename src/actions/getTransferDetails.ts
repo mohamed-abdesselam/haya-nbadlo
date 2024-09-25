@@ -7,8 +7,10 @@ export async function getTransferDetails() {
 
         // Find and populate userId in requests
         const transfers = await Transfer.find({})
-            .populate('requests.userId', 'name email specialty class gender')  // Populate userId and only select name and email fields
-            .sort({ createdAt: 'asc' });
+            .populate('requests.userId', 'name email specialty class gender') // Populate userId within requests and select specific fields
+            .populate('studentId', '_id name email specialty class gender')   // Populate studentId and select specific fields
+            .sort({ createdAt: 'asc' }); // Sort results by createdAt field in ascending order
+
 
         if (!transfers) {
             return null;
@@ -17,7 +19,14 @@ export async function getTransferDetails() {
         // Convert ObjectId to string
         const trs = transfers.map((tr: any) => ({
             _id: tr?._id.toString(),
-            studentId: tr?.studentId.toString(),
+            studentId: {
+                _id: tr.studentId._id.toString(),
+                email: tr.studentId.email,
+                name: tr.studentId.name,
+                gender: tr.studentId.gender,
+                specialty: tr.studentId.specialty,
+                class: tr.studentId.class,
+            },
             name: tr.name,
             email: tr.email,
             fromSpecialty: tr.fromSpecialty,
