@@ -56,7 +56,7 @@ const StudentList = ({ transferedList, user, role }: StudentListProps) => {
 
 
     return (
-        <div className="">
+        <div className="flex flex-col gap-4">
             {
                 transferedList.length ? (
                     transferedList.map((transfer: any) => {

@@ -56,8 +56,12 @@ const HomwClient = ({ transferedList, user }: HomeProps) => {
                 <div className={cn("flex items-center justify-between",)} >
                     <TabsList className={cn("max-sm:grid max-sm:h-full grid-cols-2", local === 'ar' && '__rtl_lang')}>
                         <TabsTrigger className="max-sm:px-2 py-1" value="transferedList">{('Transfered List')}</TabsTrigger>
-                        <TabsTrigger className="max-sm:px-2 py-1" value="transferedSent">{('Transfered sent')}</TabsTrigger>
-                        <TabsTrigger className="max-sm:px-2 py-1" value="transferedRequest">{('Transfered requset')}</TabsTrigger>
+                        <TabsTrigger className="max-sm:px-2 py-1" value="transferedSent">
+                            {('Transfered sent')}{transferedSent.length > 0 && <div className="absolute rounded-full bg-primary w-2 h-2 top-0 right-1" />}
+                        </TabsTrigger>
+                        <TabsTrigger className="max-sm:px-2 py-1" value="transferedRequest">
+                            {('Transfered requset')}{transferedRequest.length > 0 && <div className="absolute rounded-full bg-primary w-2 h-2 top-0 right-1" />}
+                        </TabsTrigger>
                         <TabsTrigger className="max-sm:px-2 py-1" value="myTransfered">{('My Transfered')}</TabsTrigger>
                     </TabsList>
                 </div>
