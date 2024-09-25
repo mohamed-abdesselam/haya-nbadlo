@@ -57,7 +57,7 @@ const TopHome = ({ user }: TopHomeProps) => {
             toast.error('please provide a valid class')
             return
         }
-        console.log(data);
+        console.log({ studentId: user?._id, ...data });
 
         try {
             const res = await axios.post('/api/transferReq', { studentId: user?._id, ...data })

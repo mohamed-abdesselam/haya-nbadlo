@@ -1,4 +1,5 @@
 import Transfer from "@/lib/models/Transfer";
+import { connectToDB } from "@/lib/mongoDB";
 import { NextResponse } from "next/server";
 
 export async function PATCH(req: Request) {
@@ -6,6 +7,7 @@ export async function PATCH(req: Request) {
         const data = await req.json();
 
         // Find the transfer document by ID
+        await connectToDB()
         const transfer = await Transfer.findById(data.transferId);
         if (!transfer) {
             return new NextResponse('Transfer not found', { status: 404 });
