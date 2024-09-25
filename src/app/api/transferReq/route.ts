@@ -9,12 +9,6 @@ export async function POST(req: Request) {
 
         // Parse the request data
         const data = await req.json();
-
-        // Perform basic validation (optional but recommended)
-        if (!data.userId || !data.requestDetails) {
-            return new NextResponse('Invalid data', { status: 400 });
-        }
-
         // Create the transfer
         const transfer = await Transfer.create(data);
 
